@@ -29,4 +29,6 @@
     <string name="title_age">Age</string>
     <string name="hint_age">18</string>
     <string name="hint_district">Chuadanga</string>
+    <string name="title_available_doctors">Available Doctors</string>
+    <string name="welcome_message">Welcome to Patient Care</string>
 </resources>
