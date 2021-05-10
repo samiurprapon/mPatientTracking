@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PatientTracking" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.PatientTracking" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/light_blue_500</item>
-        <item name="colorPrimaryVariant">@color/light_green_700</item>
+        <item name="colorPrimaryVariant">@color/blue_400</item>
         <item name="colorOnPrimary">@color/black</item>
 
         <!-- Secondary brand color. -->
