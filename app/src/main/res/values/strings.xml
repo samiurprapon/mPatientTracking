@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Patient Tracking</string>
+
+    <string name="tab_sign_in">Login</string>
+    <string name="tab_sign_up">Sign up</string>
+
+    <string name="title_email_address">Email address</string>
+    <string name="title_password">Password</string>
+    <string name="title_forget_password">Forget password?</string>
+    <string name="title_re_type_password">Re-type password</string>
+
+    <string name="title_select_user_type">Select user type</string>
+
+    <string name="patient">Patient</string>
+    <string name="doctor">Doctor</string>
+</resources>

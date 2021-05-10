@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1000136737095",
+    "project_id": "cse323-afrina",
+    "storage_bucket": "cse323-afrina.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000136737095:android:e66b1930ea0eee56734c62",
+        "android_client_info": {
+          "package_name": "cse323.nsu.patienttracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000136737095-smm3u5jb4jaulg4n7bugu3soeok1g3qs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYY9krJvFaZm3yVhmEVoU7Rmhu28p8CKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000136737095-smm3u5jb4jaulg4n7bugu3soeok1g3qs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
