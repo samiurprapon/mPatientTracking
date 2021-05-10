@@ -25,7 +25,7 @@
 
         <activity android:name=".authentication.AuthenticationActivity" />
 
-        <activity android:name=".patient.PatientHomeActivity"/>
+        <activity android:name=".patient.PatientHomeActivity" android:theme="@style/Theme.Patient"/>
         <activity android:name=".doctor.DoctorHomeActivity" />
 
         <meta-data
