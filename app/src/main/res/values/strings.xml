@@ -13,4 +13,20 @@
 
     <string name="patient">Patient</string>
     <string name="doctor">Doctor</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_appointments">Appointments</string>
+    <string name="nav_patients">Patients</string>
+    <string name="title_overview">Overview</string>
+    <string name="title_phone">Phone</string>
+    <string name="hint_phone">01234567890</string>
+    <string name="hint_name">Patient Name</string>
+    <string name="demo_mail">test2@gmail.com</string>
+    <string name="title_email">Email</string>
+    <string name="title_blood">Blood Group</string>
+    <string name="hint_b_ve">B+(ve)</string>
+    <string name="title_location">Location</string>
+    <string name="title_age">Age</string>
+    <string name="hint_age">18</string>
+    <string name="hint_district">Chuadanga</string>
 </resources>
