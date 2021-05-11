@@ -31,8 +31,7 @@
     <string name="hint_district">district</string>
     <string name="title_available_doctors">Available Doctors</string>
     <string name="welcome_message">Welcome to Patient Care</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_email">example@gmail.com</string>
+    <string name="title_patient_appointments">Appointments I took</string>
 
 </resources>

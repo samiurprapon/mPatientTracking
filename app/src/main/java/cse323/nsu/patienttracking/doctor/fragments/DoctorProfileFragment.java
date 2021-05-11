@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
-import cse323.nsu.patienttracking.models.Patient;
 import cse323.nsu.patienttracking.utils.CustomProgressBar;
 
 
@@ -87,6 +88,10 @@ public class DoctorProfileFragment extends Fragment {
         progressBar.show("loading...");
         parseDataFromFirebase();
         updatePlaceHolders(getSharedPreferences());
+
+        mSettings.setOnClickListener(v -> {
+            changeFragment(DoctorProfileSettingsFragment.newInstance());
+        });
 
     }
 
@@ -175,4 +180,13 @@ public class DoctorProfileFragment extends Fragment {
         return new AvailableDoctor(name, email, degree, workplace, expertise, sex, phone, about);
     }
 
+    private void changeFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                R.anim.left_enter, R.anim.right_out);
+        fragmentTransaction.replace(R.id.frame_container, fragment);
+        fragmentTransaction.commit();
+    }
 }

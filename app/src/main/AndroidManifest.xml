@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PatientTracking"
         tools:replace="android:theme">
-        <activity android:name=".patient.PatientProfileSettingsActivity"></activity>
+        <activity android:name=".patient.PatientProfileSettingsActivity" android:theme="@style/Theme.Patient"/>
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,8 @@
         <activity
             android:name=".patient.PatientHomeActivity"
             android:theme="@style/Theme.Patient" />
-        <activity android:name=".doctor.DoctorHomeActivity" />
+        <activity android:name=".doctor.DoctorHomeActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".patient.PatientProfileActivity"
             android:theme="@style/Theme.Patient" />

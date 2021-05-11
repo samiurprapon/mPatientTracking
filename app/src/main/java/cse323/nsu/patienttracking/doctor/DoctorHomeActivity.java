@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.doctor.fragments.DoctorAppointmentsFragment;
 import cse323.nsu.patienttracking.doctor.fragments.DoctorHomeFragment;
+import cse323.nsu.patienttracking.doctor.fragments.DoctorPatientsFragment;
 import cse323.nsu.patienttracking.doctor.fragments.DoctorProfileFragment;
 import cse323.nsu.patienttracking.utils.CustomProgressBar;
 
@@ -42,6 +43,11 @@ public class DoctorHomeActivity extends AppCompatActivity {
             Fragment fragment;
 
             switch (item.getItemId()) {
+                case R.id.navigation_patients:
+                    fragment = DoctorPatientsFragment.newInstance();
+                    loadFragment(fragment);
+                    return true;
+
                 case R.id.navigation_appointment:
                     fragment = DoctorAppointmentsFragment.newInstance();
                     loadFragment(fragment);
