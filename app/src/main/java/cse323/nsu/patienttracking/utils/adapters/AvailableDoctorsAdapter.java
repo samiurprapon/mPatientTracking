@@ -48,7 +48,7 @@ public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDocto
 
             holder.mName.setText(availableDoctor.getName());
             holder.mDegree.setText(availableDoctor.getDegree());
-            holder.mWorkAt.setText(availableDoctor.getWorkAt());
+            holder.mWorkAt.setText(availableDoctor.getWorkplace());
             holder.mExpertise.setText(availableDoctor.getExpertise());
 
             holder.mContainer.setOnClickListener(v -> {

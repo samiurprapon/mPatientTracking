@@ -1,9 +1,10 @@
 package cse323.nsu.patienttracking.models;
 
 public class AvailableDoctor {
+    private String uid;
     private String name;
     private String degree;
-    private String workAt;
+    private String workplace;
     private String expertise;
     private String sex;
 
@@ -11,10 +12,10 @@ public class AvailableDoctor {
         // empty constructor for firebase database
     }
 
-    public AvailableDoctor(String name, String degree, String workAt, String expertise, String sex) {
+    public AvailableDoctor(String name, String degree, String workplace, String expertise, String sex) {
         this.name = name;
         this.degree = degree;
-        this.workAt = workAt;
+        this.workplace = workplace;
         this.expertise = expertise;
         this.sex = sex;
     }
@@ -27,8 +28,8 @@ public class AvailableDoctor {
         return degree;
     }
 
-    public String getWorkAt() {
-        return workAt;
+    public String getWorkplace() {
+        return workplace;
     }
 
     public String getExpertise() {
@@ -37,5 +38,9 @@ public class AvailableDoctor {
 
     public String getSex() {
         return sex;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

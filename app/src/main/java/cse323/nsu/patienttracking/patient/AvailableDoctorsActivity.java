@@ -1,5 +1,6 @@
 package cse323.nsu.patienttracking.patient;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,18 +69,46 @@ public class AvailableDoctorsActivity extends AppCompatActivity {
 
     private void getAvailableDoctorList() {
         doctorList = new ArrayList<>();
-        //ToDo
+
         // get doctor list from firebase database
+        readDataFromFirebase();
 
-        // test
-        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
-        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
-        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
-        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
-        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
-        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
+//        // test
+//        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
+//        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
+//        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
+//        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
+//        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
+//        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
 
-        adapter.setAvailableDoctorList(doctorList);
-        mRecyclerView.setAdapter(adapter);
+    }
+
+    private void readDataFromFirebase() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("doctors");
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    AvailableDoctor availableDoctor = dataSnapshot.getValue(AvailableDoctor.class);
+                    if (availableDoctor != null) {
+                        availableDoctor.setUid(dataSnapshot.getKey());
+                    }
+
+                    doctorList.add(availableDoctor);
+                }
+
+
+                adapter.setAvailableDoctorList(doctorList);
+                mRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }
