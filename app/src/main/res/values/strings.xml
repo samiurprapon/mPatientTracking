@@ -28,10 +28,11 @@
     <string name="title_location">Location</string>
     <string name="title_age">Age</string>
     <string name="hint_age">18</string>
-    <string name="hint_district">Chuadanga</string>
+    <string name="hint_district">district</string>
     <string name="title_available_doctors">Available Doctors</string>
     <string name="welcome_message">Welcome to Patient Care</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_email">example@gmail.com</string>
 
 </resources>

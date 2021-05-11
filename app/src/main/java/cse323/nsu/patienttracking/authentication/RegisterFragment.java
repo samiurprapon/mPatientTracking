@@ -78,7 +78,7 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mEmail = view.findViewById(R.id.et_email);
+        mEmail = view.findViewById(R.id.et_phone);
         mPassword = view.findViewById(R.id.et_password);
         mConfirmPassword = view.findViewById(R.id.et_confirm_password);
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -24,6 +25,7 @@ public class PatientHomeActivity extends AppCompatActivity {
     CardView mAppointment;
 
     private CustomProgressBar progressBar;
+    private Boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,5 +81,18 @@ public class PatientHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(PatientHomeActivity.this, AuthenticationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler(Looper.myLooper()).postDelayed(() -> exit = false, 3 * 1000);
+
+        }
     }
 }

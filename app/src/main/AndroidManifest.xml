@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PatientTracking"
         tools:replace="android:theme">
-
+        <activity android:name=".patient.PatientProfileSettingsActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,6 @@
         <activity
             android:name=".patient.AvailableDoctorsActivity"
             android:theme="@style/Theme.Patient" />
-
         <activity
             android:name=".patient.MyPrescriptionsActivity"
             android:theme="@style/Theme.Patient" />
