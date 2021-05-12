@@ -1,6 +1,5 @@
 package cse323.nsu.patienttracking.patient;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -23,7 +22,6 @@ import java.util.List;
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
 import cse323.nsu.patienttracking.utils.CustomProgressBar;
-import cse323.nsu.patienttracking.utils.ObjectClickListener;
 import cse323.nsu.patienttracking.utils.adapters.AvailableDoctorsAdapter;
 
 public class AvailableDoctorsActivity extends AppCompatActivity {
@@ -66,14 +64,6 @@ public class AvailableDoctorsActivity extends AppCompatActivity {
             }, 50);
         });
 
-        mRecyclerView.addOnItemTouchListener(new ObjectClickListener(this, mRecyclerView, (view, position) -> {
-
-//                Log.d("available:success", doctorList.get(position).toString());
-            //
-            Intent intent = new Intent(AvailableDoctorsActivity.this, DoctorProfileActivity.class);
-            intent.putExtra("doctor", doctorList.get(position));
-            startActivity(intent);
-        }));
     }
 
     @Override

@@ -63,18 +63,4 @@ public class AvailableDoctor implements Serializable {
     public void setUid(String uid) {
         this.uid = uid;
     }
-
-    @Override
-    public String toString() {
-        return "AvailableDoctor{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", degree='" + degree + '\'' +
-                ", workplace='" + workplace + '\'' +
-                ", expertise='" + expertise + '\'' +
-                ", sex='" + sex + '\'' +
-                ", phone='" + phone + '\'' +
-                ", about='" + about + '\'' +
-                '}';
-    }
 }

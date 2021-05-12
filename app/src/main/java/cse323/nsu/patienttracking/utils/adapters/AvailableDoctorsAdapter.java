@@ -1,6 +1,7 @@
 package cse323.nsu.patienttracking.utils.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import java.util.List;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
+import cse323.nsu.patienttracking.patient.AvailableDoctorsActivity;
+import cse323.nsu.patienttracking.patient.DoctorProfileActivity;
 
 public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDoctorsAdapter.ViewHolder> {
 
@@ -52,8 +55,10 @@ public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDocto
             holder.mExpertise.setText(availableDoctor.getExpertise());
 
             holder.mContainer.setOnClickListener(v -> {
-                //ToDo
                 // open doctor profile activity
+                Intent intent = new Intent(context, DoctorProfileActivity.class);
+                intent.putExtra("doctor", availableDoctorList.get(position));
+                context.startActivity(intent);
             });
 
         }
