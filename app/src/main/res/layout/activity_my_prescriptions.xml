@@ -54,8 +54,10 @@
                 android:id="@+id/rv_prescriptions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
-                tools:listitem="@layout/item_appointment"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_prescription" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_no_prescriptions"
@@ -66,6 +68,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/rectangle_box"
                 android:elevation=".5dp"
+                android:visibility="gone"
                 android:outlineProvider="paddedBounds"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

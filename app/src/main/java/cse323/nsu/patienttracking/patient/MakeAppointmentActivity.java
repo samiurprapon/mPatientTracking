@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,28 +73,12 @@ public class MakeAppointmentActivity extends AppCompatActivity {
     public void getAppointmentList() {
         appointmentList = new ArrayList<>();
 
-        appointmentList.add(new DoctorAppointment("test1", "male", "Pending", "Consultation", "25/12/2021 at 5 PM"));
-        appointmentList.add(new DoctorAppointment("test1", "female", "Accepted", "Consultation", "25/12/2021 at 5 PM"));
-
-//        readDataFromFirebase();
-
-        // debug starts
-        progressBar.hide();
-        adapter.setDoctorAppointmentList(appointmentList);
-        mRecyclerView.setAdapter(adapter);
-        // debug ends
-
-        if(appointmentList.size() != 0) {
-            mNoAppointments.setVisibility(View.GONE);
-            mRecyclerView.setVisibility(View.VISIBLE);
-        } else {
-            mRecyclerView.setVisibility(View.GONE);
-            mNoAppointments.setVisibility(View.VISIBLE);
-        }
+        readDataFromFirebase();
     }
 
     private void readDataFromFirebase() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("appointments");
+        String uid = FirebaseAuth.getInstance().getUid();
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -103,15 +88,29 @@ public class MakeAppointmentActivity extends AppCompatActivity {
                     DoctorAppointment appointment = dataSnapshot.getValue(DoctorAppointment.class);
                     if (appointment != null) {
                         appointment.setId(dataSnapshot.getKey());
+
+//                        Log.d("appointment:success", appointment.getPatientUid());
+//                        Log.d("appointment:success", uid);
+
+                        if(appointment.getPatientUid() != null && appointment.getPatientUid().equals(uid)){
+                            appointmentList.add(appointment);
+                        }
                     }
 
-                    appointmentList.add(appointment);
                 }
 
                 progressBar.hide();
 
                 adapter.setDoctorAppointmentList(appointmentList);
                 mRecyclerView.setAdapter(adapter);
+
+                if(appointmentList.size() != 0) {
+                    mNoAppointments.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                } else {
+                    mRecyclerView.setVisibility(View.GONE);
+                    mNoAppointments.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
