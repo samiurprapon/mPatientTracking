@@ -1,6 +1,8 @@
 package cse323.nsu.patienttracking.models;
 
-public class AvailableDoctor {
+import java.io.Serializable;
+
+public class AvailableDoctor implements Serializable {
     private String uid;
     private String name;
     private String email;
@@ -62,4 +64,17 @@ public class AvailableDoctor {
         this.uid = uid;
     }
 
+    @Override
+    public String toString() {
+        return "AvailableDoctor{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", degree='" + degree + '\'' +
+                ", workplace='" + workplace + '\'' +
+                ", expertise='" + expertise + '\'' +
+                ", sex='" + sex + '\'' +
+                ", phone='" + phone + '\'' +
+                ", about='" + about + '\'' +
+                '}';
+    }
 }

@@ -91,7 +91,7 @@ public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDocto
             mAvatar = itemView.findViewById(R.id.iv_avatar);
             mName = itemView.findViewById(R.id.tv_name);
             mDegree = itemView.findViewById(R.id.tv_degree);
-            mExpertise = itemView.findViewById(R.id.tv_expertise);
+            mExpertise = itemView.findViewById(R.id.tv_date_time);
             mWorkAt = itemView.findViewById(R.id.tv_chamber);
 
         }

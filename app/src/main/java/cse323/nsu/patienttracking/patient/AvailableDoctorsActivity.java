@@ -1,14 +1,15 @@
 package cse323.nsu.patienttracking.patient;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.os.Bundle;
-import android.os.Handler;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +22,8 @@ import java.util.List;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
+import cse323.nsu.patienttracking.utils.CustomProgressBar;
+import cse323.nsu.patienttracking.utils.ObjectClickListener;
 import cse323.nsu.patienttracking.utils.adapters.AvailableDoctorsAdapter;
 
 public class AvailableDoctorsActivity extends AppCompatActivity {
@@ -30,6 +33,8 @@ public class AvailableDoctorsActivity extends AppCompatActivity {
 
     AvailableDoctorsAdapter adapter;
     private List<AvailableDoctor> doctorList;
+
+    CustomProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,24 +46,34 @@ public class AvailableDoctorsActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.refresh);
 
         adapter = new AvailableDoctorsAdapter(this);
+        progressBar = new CustomProgressBar(this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setNestedScrollingEnabled(true);
 
+        progressBar.show("");
         getAvailableDoctorList();
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // implement Handler to wait for 3 seconds and then update UI means update value of TextView
-                new Handler().postDelayed(() -> {
-                    swipeRefreshLayout.setRefreshing(false);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            progressBar.show("");
 
-                    getAvailableDoctorList();
-                }, 2000);
-            }
+            // implement Handler to wait for 3 seconds and then update UI means update value of TextView
+            new Handler().postDelayed(() -> {
+                swipeRefreshLayout.setRefreshing(false);
+
+                getAvailableDoctorList();
+            }, 50);
         });
+
+        mRecyclerView.addOnItemTouchListener(new ObjectClickListener(this, mRecyclerView, (view, position) -> {
+
+//                Log.d("available:success", doctorList.get(position).toString());
+            //
+            Intent intent = new Intent(AvailableDoctorsActivity.this, DoctorProfileActivity.class);
+            intent.putExtra("doctor", doctorList.get(position));
+            startActivity(intent);
+        }));
     }
 
     @Override
@@ -72,14 +87,6 @@ public class AvailableDoctorsActivity extends AppCompatActivity {
 
         // get doctor list from firebase database
         readDataFromFirebase();
-
-//        // test
-//        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
-//        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
-//        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
-//        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
-//        doctorList.add(new AvailableDoctor("Dr. Abdul Motin", "MBBS", "Dhaka Medical College", "Medicine", "male"));
-//        doctorList.add(new AvailableDoctor("Dr. Rabeya Khatun", "MBBS", "Dhaka Medical College", "Gynecology", "female"));
 
     }
 
@@ -99,14 +106,14 @@ public class AvailableDoctorsActivity extends AppCompatActivity {
                     doctorList.add(availableDoctor);
                 }
 
-
+                progressBar.hide();
                 adapter.setAvailableDoctorList(doctorList);
                 mRecyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                progressBar.hide();
             }
         });
 

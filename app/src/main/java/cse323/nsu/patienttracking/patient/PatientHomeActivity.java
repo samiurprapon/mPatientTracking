@@ -18,13 +18,11 @@ import cse323.nsu.patienttracking.utils.CustomProgressBar;
 
 public class PatientHomeActivity extends AppCompatActivity {
 
-    MaterialButton mLogout;
     CardView mProfile;
     CardView mMyPrescription;
     CardView mAvailableDoctors;
     CardView mAppointment;
 
-    private CustomProgressBar progressBar;
     private Boolean exit = false;
 
     @Override
@@ -37,9 +35,6 @@ public class PatientHomeActivity extends AppCompatActivity {
         mMyPrescription = findViewById(R.id.cv_prescriptions);
         mAvailableDoctors = findViewById(R.id.cv_doctors);
         mAppointment = findViewById(R.id.cv_appointment);
-        mLogout = findViewById(R.id.mb_logout);
-
-        progressBar = new CustomProgressBar(this);
 
         mProfile.setOnClickListener(view -> {
             Intent intent = new Intent(PatientHomeActivity.this, PatientProfileActivity.class);
@@ -62,25 +57,6 @@ public class PatientHomeActivity extends AppCompatActivity {
         });
 
 
-        mLogout.setOnClickListener(view -> {
-
-            progressBar.show("Logging out...");
-
-            new Handler(Looper.myLooper()).postDelayed(() -> {
-                FirebaseAuth.getInstance().signOut();
-
-                progressBar.hide();
-
-                pavilion();
-
-            }, 800);
-        });
-    }
-
-    private void pavilion() {
-        Intent intent = new Intent(PatientHomeActivity.this, AuthenticationActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     @Override

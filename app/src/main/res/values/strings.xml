@@ -33,5 +33,9 @@
     <string name="welcome_message">Welcome to Patient Care</string>
     <string name="hint_email">example@gmail.com</string>
     <string name="title_patient_appointments">Appointments I took</string>
+    <string name="hint_about">About</string>
+    <string name="expertise">expertise</string>
+    <string name="degree">degree</string>
+    <string name="doctor_name">doctor name</string>
 
 </resources>

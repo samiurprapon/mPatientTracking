@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".doctor.fragments.DoctorProfileSettingsFragment">
-
+    tools:context=".patient.DoctorProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,11 +15,8 @@
             android:id="@+id/scrollView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".7"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0">
 
@@ -31,7 +27,24 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".9">
+
+                <ImageButton
+                    android:id="@+id/ib_appointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:color/transparent"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_appointment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:id="@+id/iv_avatar"
@@ -44,66 +57,62 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_name"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_width="0dp"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@+id/iv_avatar"
                     android:fontFamily="@font/mina"
-                    android:hint="Doctor Name"
+                    android:hint="@string/doctor_name"
                     app:layout_constraintBottom_toTopOf="@+id/tv_degree"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/iv_avatar"
                     app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_degree"
                     style="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/mina"
-                    android:hint="MBBS"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:hint="@string/degree"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_date_time"
                     app:layout_constraintStart_toStartOf="@+id/tv_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_date_time"
                     style="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:hint="expertise"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/iv_avatar"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+                    android:hint="@string/expertise"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                    app:layout_constraintStart_toStartOf="@+id/tv_degree"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_degree"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     app:layout_constraintBottom_toTopOf="@+id/imageView5"
                     app:layout_constraintEnd_toStartOf="@+id/tv_phone"
                     app:layout_constraintStart_toStartOf="@+id/iv_avatar"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_date_time"
-                    app:srcCompat="@drawable/ic_baseline_phone_24" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+                    app:srcCompat="@drawable/ic_baseline_phone_24"
+                    app:tint="@color/deep_orange_400"
+                    tools:ignore="ContentDescription" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,8 +120,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="24dp"
                     android:fontFamily="@font/mina"
-                    android:hint="+88 (017) 0 12 34 56"
                     android:maxLines="1"
+                    android:text=""
                     android:textColor="#B9B9B9"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView4"
@@ -125,24 +134,25 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/imageView6"
                     app:layout_constraintEnd_toStartOf="@+id/doctor_email"
                     app:layout_constraintStart_toStartOf="@+id/imageView4"
                     app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                    app:srcCompat="@drawable/ic_baseline_email_24"
+                    app:tint="@color/deep_orange_400"
+                    tools:ignore="ContentDescription" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/doctor_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="24dp"
-                    android:hint="@string/hint_email"
                     android:maxLines="1"
+                    android:text=""
                     android:textColor="#B9B9B9"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
@@ -155,24 +165,26 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="24dp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_about_title"
                     app:layout_constraintEnd_toStartOf="@+id/doctor_address"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                    app:srcCompat="@drawable/ic_baseline_work_24" />
+                    app:srcCompat="@drawable/ic_baseline_work_24"
+                    app:tint="@color/deep_orange_400"
+                    tools:ignore="ContentDescription" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/doctor_address"
-                    android:layout_width="284dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="24dp"
                     android:fontFamily="@font/mina"
-                    android:hint="Dhaka Medical College"
+                    android:text=""
                     android:textColor="#B9B9B9"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView6"
@@ -187,13 +199,13 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/mina"
-                    android:text="About"
+                    android:text="@string/hint_about"
                     android:textColor="#000"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/imageView6"
                     app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_doctor_about"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -203,49 +215,17 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
                     android:fontFamily="@font/mina"
-                    android:gravity="start"
-                    android:hint="Write your about here"
-                    android:textAlignment="textStart"
+                    android:text="@string/hint_about"
                     android:textColor="#B9B9B9"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_save"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent=".30"
+                    app:layout_constraintHeight_percent=".348"
                     app:layout_constraintStart_toStartOf="@+id/tv_about_title"
                     app:layout_constraintTop_toBottomOf="@+id/tv_about_title" />
 
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/selector_button"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="Update"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_doctor_about"
-                    tools:ignore="ContentDescription" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/mb_logout"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Logout"
-                    app:icon="@drawable/ic_logout"
-                    app:iconTint="@null"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btn_save"
-                    app:layout_constraintStart_toStartOf="@+id/btn_save"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_save" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -253,4 +233,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

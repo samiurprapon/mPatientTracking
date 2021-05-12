@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,10 @@ public class DoctorProfileSettingsFragment extends Fragment {
 
     MaterialButton mLogout;
     CustomProgressBar progressBar;
+
+    ImageView mAvatar;
+
+    private String avatar = "female";
 
     public DoctorProfileSettingsFragment() {
         // Required empty public constructor
@@ -55,7 +60,10 @@ public class DoctorProfileSettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mAvatar = view.findViewById(R.id.iv_avatar);
+
         mLogout = view.findViewById(R.id.mb_logout);
+
         progressBar = new CustomProgressBar(getContext());
 
         mLogout.setOnClickListener(v -> {
@@ -70,7 +78,27 @@ public class DoctorProfileSettingsFragment extends Fragment {
 
             }, 800);
         });
+
+        mAvatar.setOnClickListener(v -> {
+            mAvatar.setEnabled(false);
+            toggleAvatar();
+            mAvatar.setEnabled(true);
+        });
     }
+
+    private void toggleAvatar() {
+
+        if (avatar.equals("female")) {
+            mAvatar.animate().rotationBy(360f).setDuration(360).start();
+            mAvatar.setImageResource(R.drawable.ic_male_doctor);
+            avatar = "male";
+        } else {
+            mAvatar.animate().rotationBy(-360f).setDuration(360).start();
+            mAvatar.setImageResource(R.drawable.ic_female_doctor);
+            avatar = "female";
+        }
+    }
+
 
     private void pavilion() {
         Intent intent = new Intent(getActivity(), AuthenticationActivity.class);

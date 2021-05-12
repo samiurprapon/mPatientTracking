@@ -75,7 +75,7 @@ public class DoctorProfileFragment extends Fragment {
         mAvatar = view.findViewById(R.id.iv_avatar);
         mName = view.findViewById(R.id.tv_name);
         mDegree = view.findViewById(R.id.tv_degree);
-        mExpertise = view.findViewById(R.id.tv_expertise);
+        mExpertise = view.findViewById(R.id.tv_date_time);
         mPhone = view.findViewById(R.id.tv_phone);
         mEmail = view.findViewById(R.id.doctor_email);
         mWorkplace = view.findViewById(R.id.doctor_address);

@@ -80,12 +80,12 @@
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/mina"
                     android:text="degree"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_expertise"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_date_time"
                     app:layout_constraintStart_toStartOf="@+id/tv_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_expertise"
+                    android:id="@+id/tv_date_time"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

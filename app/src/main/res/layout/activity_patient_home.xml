@@ -225,18 +225,5 @@
 
     </RelativeLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_logout"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        app:icon="@drawable/ic_logout"
-        app:iconTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lt_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
