@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +33,7 @@ import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.DoctorAppointment;
 import cse323.nsu.patienttracking.models.Patient;
 import cse323.nsu.patienttracking.utils.CustomProgressBar;
+import cse323.nsu.patienttracking.utils.ObjectClickListener;
 import cse323.nsu.patienttracking.utils.adapters.PatientsAdapter;
 
 public class DoctorPatientsFragment extends Fragment {
@@ -89,6 +92,8 @@ public class DoctorPatientsFragment extends Fragment {
         progressBar.show("");
         getPatientList();
 
+        mRecyclerView.addOnItemTouchListener(new ObjectClickListener(getContext(), mRecyclerView, (view1, position) -> changeFragment(PatientProfileFragment.newInstance(patientList.get(position)))));
+
         swipeRefreshLayout.setOnRefreshListener(() -> {
             progressBar.show("");
 
@@ -99,7 +104,20 @@ public class DoctorPatientsFragment extends Fragment {
                 getPatientList();
             }, 50);
         });
+
+
     }
+
+    private void changeFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                R.anim.left_enter, R.anim.right_out);
+        fragmentTransaction.replace(R.id.frame_container, fragment);
+        fragmentTransaction.commit();
+    }
+
 
     public void getPatientList() {
         patientList = new ArrayList<>();
