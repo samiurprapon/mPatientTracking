@@ -37,5 +37,6 @@
     <string name="expertise">expertise</string>
     <string name="degree">degree</string>
     <string name="doctor_name">doctor name</string>
+    <string name="hint_date">14/06/2021</string>
 
 </resources>
