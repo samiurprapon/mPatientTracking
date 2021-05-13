@@ -18,7 +18,6 @@ import java.util.List;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
-import cse323.nsu.patienttracking.patient.AvailableDoctorsActivity;
 import cse323.nsu.patienttracking.patient.DoctorProfileActivity;
 
 public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDoctorsAdapter.ViewHolder> {
@@ -49,10 +48,21 @@ public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDocto
 
             holder.mAvatar.setImageResource(availableDoctor.getSex().equals("male") ? R.drawable.illustration_male_doctor : R.drawable.illustration_female_doctor);
 
-            holder.mName.setText(availableDoctor.getName());
-            holder.mDegree.setText(availableDoctor.getDegree());
-            holder.mWorkAt.setText(availableDoctor.getWorkplace());
-            holder.mExpertise.setText(availableDoctor.getExpertise());
+            if(availableDoctor.getName() != null) {
+                holder.mName.setText(availableDoctor.getName());
+            }
+
+            if(availableDoctor.getDegree() != null) {
+                holder.mDegree.setText(availableDoctor.getDegree());
+            }
+
+            if(availableDoctor.getWorkplace() != null) {
+                holder.mWorkAt.setText(availableDoctor.getWorkplace());
+            }
+
+            if(availableDoctor.getExpertise() != null) {
+                holder.mExpertise.setText(availableDoctor.getExpertise());
+            }
 
             holder.mContainer.setOnClickListener(v -> {
                 // open doctor profile activity
@@ -95,9 +105,9 @@ public class AvailableDoctorsAdapter extends RecyclerView.Adapter<AvailableDocto
 
             mAvatar = itemView.findViewById(R.id.iv_avatar);
             mName = itemView.findViewById(R.id.tv_name);
-            mDegree = itemView.findViewById(R.id.tv_degree);
+            mDegree = itemView.findViewById(R.id.tv_age);
             mExpertise = itemView.findViewById(R.id.tv_date_time);
-            mWorkAt = itemView.findViewById(R.id.tv_chamber);
+            mWorkAt = itemView.findViewById(R.id.tv_address);
 
         }
     }

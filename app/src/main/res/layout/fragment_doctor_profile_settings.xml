@@ -56,14 +56,14 @@
                     android:layout_toEndOf="@+id/iv_avatar"
                     android:fontFamily="@font/mina"
                     android:hint="Doctor Name"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_degree"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_age"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/iv_avatar"
                     app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/tv_degree"
+                    android:id="@+id/tv_age"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

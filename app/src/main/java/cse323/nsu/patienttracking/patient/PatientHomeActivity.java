@@ -9,12 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.firebase.auth.FirebaseAuth;
-
 import cse323.nsu.patienttracking.R;
-import cse323.nsu.patienttracking.authentication.AuthenticationActivity;
-import cse323.nsu.patienttracking.utils.CustomProgressBar;
 
 public class PatientHomeActivity extends AppCompatActivity {
 
@@ -52,7 +47,7 @@ public class PatientHomeActivity extends AppCompatActivity {
         });
 
         mAppointment.setOnClickListener(view -> {
-            Intent intent = new Intent(PatientHomeActivity.this, MakeAppointmentActivity.class);
+            Intent intent = new Intent(PatientHomeActivity.this, DoctorAppointmentsActivity.class);
             startActivity(intent);
         });
 

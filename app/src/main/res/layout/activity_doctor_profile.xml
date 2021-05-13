@@ -68,12 +68,12 @@
                     android:layout_toEndOf="@+id/iv_avatar"
                     android:fontFamily="@font/mina"
                     android:hint="@string/doctor_name"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_degree"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_age"
                     app:layout_constraintStart_toEndOf="@+id/iv_avatar"
                     app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_degree"
+                    android:id="@+id/tv_age"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,8 +91,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/expertise"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                    app:layout_constraintStart_toStartOf="@+id/tv_degree"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_degree"
+                    app:layout_constraintStart_toStartOf="@+id/tv_age"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_age"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <ImageView

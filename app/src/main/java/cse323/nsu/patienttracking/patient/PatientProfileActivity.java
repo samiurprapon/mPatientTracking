@@ -108,20 +108,36 @@ public class PatientProfileActivity extends AppCompatActivity {
 
     private void updatePlaceholders(Patient patient) {
 
-        if(patient.getSex().equals("male")) {
+        if (patient.getSex().equals("male")) {
             mAvatar.setImageResource(R.drawable.ic_male);
         } else {
             mAvatar.setImageResource(R.drawable.ic_female);
         }
 
-        mName.setText(patient.getName());
-        mPhone.setText(patient.getPhone());
-        mEmail.setText(patient.getEmail());
-        mBlood.setText(patient.getBlood());
-        mLocation.setText(patient.getLocation());
-        mAge.setText(String.valueOf(patient.getAge()));
+        if (patient.getName() != null) {
+            mName.setText(patient.getName());
+        }
 
-        setSharedPreferences(patient);
+        if (patient.getPhone() != null) {
+            mPhone.setText(patient.getPhone());
+        }
+
+        if (patient.getEmail() != null) {
+            mEmail.setText(patient.getEmail());
+        }
+
+        if (patient.getBlood() != null) {
+            mBlood.setText(patient.getBlood());
+        }
+
+        if (patient.getLocation() != null) {
+            mLocation.setText(patient.getLocation());
+        }
+
+
+        if (patient.getAge() != 0) {
+            mAge.setText(String.valueOf(patient.getAge()));
+        }
     }
 
     public void setSharedPreferences(Patient patient) {

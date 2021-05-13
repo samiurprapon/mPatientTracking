@@ -34,7 +34,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="4dp"
             android:fontFamily="@font/mina"
-            android:text="Doctor Name"
+            android:text="Patient Name"
             app:layout_constraintBottom_toTopOf="@+id/tv_age"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -50,30 +50,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/mina"
-            android:text="MBBS"
-            app:layout_constraintBottom_toTopOf="@+id/tv_date_time"
+            android:text="18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_date_time"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="4dp"
-            android:fontFamily="@font/mina"
-            android:text="expertise"
-            app:layout_constraintBottom_toTopOf="@+id/tv_address"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/tv_age"
-            app:layout_constraintVertical_bias="0.57" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_address"
@@ -81,16 +63,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/mina"
-            android:text="Dhaka Medical College"
+            android:text="Dhaka"
             app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date_time" />
+            app:layout_constraintStart_toEndOf="@+id/iv_avatar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

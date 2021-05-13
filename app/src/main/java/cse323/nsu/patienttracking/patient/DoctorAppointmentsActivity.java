@@ -27,7 +27,7 @@ import cse323.nsu.patienttracking.models.DoctorAppointment;
 import cse323.nsu.patienttracking.utils.CustomProgressBar;
 import cse323.nsu.patienttracking.utils.adapters.DoctorAppointmentAdapter;
 
-public class MakeAppointmentActivity extends AppCompatActivity {
+public class DoctorAppointmentsActivity extends AppCompatActivity {
 
     ConstraintLayout mNoAppointments;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -41,7 +41,7 @@ public class MakeAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        setContentView(R.layout.activity_make_appointment);
+        setContentView(R.layout.activity_doctor_appointments);
 
         mNoAppointments = findViewById(R.id.cl_no_appointment);
 

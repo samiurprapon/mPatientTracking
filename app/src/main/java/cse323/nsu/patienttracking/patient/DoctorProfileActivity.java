@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
-import cse323.nsu.patienttracking.utils.CustomProgressBar;
 
 public class DoctorProfileActivity extends AppCompatActivity {
 
@@ -26,7 +25,6 @@ public class DoctorProfileActivity extends AppCompatActivity {
 
     ImageButton mAppointment;
 
-    CustomProgressBar progressBar;
 
     AvailableDoctor doctor;
 
@@ -44,7 +42,7 @@ public class DoctorProfileActivity extends AppCompatActivity {
 
         mAvatar = findViewById(R.id.iv_avatar);
         mName = findViewById(R.id.tv_name);
-        mDegree = findViewById(R.id.tv_degree);
+        mDegree = findViewById(R.id.tv_age);
         mExpertise = findViewById(R.id.tv_date_time);
         mPhone = findViewById(R.id.tv_phone);
         mEmail = findViewById(R.id.doctor_email);
@@ -54,6 +52,12 @@ public class DoctorProfileActivity extends AppCompatActivity {
         mAppointment = findViewById(R.id.ib_appointment);
 
         updatePlaceHolders(doctor);
+
+        mAppointment.setOnClickListener(v -> {
+            MakesAppointmentFragment fragment = MakesAppointmentFragment.newInstance();
+
+            fragment.show(getSupportFragmentManager(), "Appointment");
+        });
 
     }
 

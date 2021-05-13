@@ -55,5 +55,8 @@ dependencies {
 
 //    Rounded Image View
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+//    Date picker
+    implementation 'com.github.florent37:singledateandtimepicker:2.2.7'
 }
 apply plugin: 'com.google.gms.google-services'
