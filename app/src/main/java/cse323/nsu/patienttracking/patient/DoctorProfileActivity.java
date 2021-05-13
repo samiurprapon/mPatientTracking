@@ -1,5 +1,7 @@
 package cse323.nsu.patienttracking.patient;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -11,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.AvailableDoctor;
+import cse323.nsu.patienttracking.models.Patient;
 
 public class DoctorProfileActivity extends AppCompatActivity {
 
@@ -55,6 +58,7 @@ public class DoctorProfileActivity extends AppCompatActivity {
 
         mAppointment.setOnClickListener(v -> {
             MakesAppointmentFragment fragment = MakesAppointmentFragment.newInstance();
+            getIntent().putExtra("doctor", doctor);
 
             fragment.show(getSupportFragmentManager(), "Appointment");
         });

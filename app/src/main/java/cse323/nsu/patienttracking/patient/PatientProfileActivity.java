@@ -96,6 +96,7 @@ public class PatientProfileActivity extends AppCompatActivity {
         reference.child(uid).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
                 Patient patient = task.getResult().getValue(Patient.class);
+                setSharedPreferences(patient);
                 updatePlaceholders(patient);
 
             } else {
@@ -152,20 +153,6 @@ public class PatientProfileActivity extends AppCompatActivity {
         editor.putInt("age", patient.getAge());
 
         editor.apply();
-    }
-
-    public Patient getSharedPreferences() {
-        SharedPreferences preferences = getSharedPreferences("profile", Context.MODE_PRIVATE);
-
-        String name = preferences.getString("name", null);
-        String blood = preferences.getString("blood", null);
-        String email = preferences.getString("email", null);
-        String phone = preferences.getString("phone", null);
-        String sex = preferences.getString("sex", null);
-        String location = preferences.getString("location", null);
-        int age = preferences.getInt("age", 0);
-
-        return new Patient(age, blood, email, location, name, phone, sex);
     }
 
     private void pavilion() {

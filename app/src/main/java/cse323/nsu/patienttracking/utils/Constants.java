@@ -8,6 +8,12 @@ public class Constants {
             "A-(ne)", "B-(ne)", "O-(ne)", "AB-(ne)"
     };
 
+    public static String[] APPOINTMENT_TYPE = {
+            "consultation",
+            "hospitalization",
+            "Observation"
+    };
+
     public static int getPosition(String group) {
 
         int result = 0;
