@@ -45,7 +45,7 @@
                     tools:ignore="ContentDescription" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/tv_name"
+                    android:id="@+id/et_name"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -56,14 +56,14 @@
                     android:layout_toEndOf="@+id/iv_avatar"
                     android:fontFamily="@font/mina"
                     android:hint="Doctor Name"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_age"
+                    app:layout_constraintBottom_toTopOf="@+id/et_degree"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/iv_avatar"
                     app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/tv_age"
+                    android:id="@+id/et_degree"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -73,11 +73,11 @@
                     android:hint="MBBS"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/tv_name"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/tv_date_time"
+                    android:id="@+id/et_expertise"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -98,13 +98,13 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     app:layout_constraintBottom_toTopOf="@+id/imageView5"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_phone"
+                    app:layout_constraintEnd_toStartOf="@+id/et_phone"
                     app:layout_constraintStart_toStartOf="@+id/iv_avatar"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_date_time"
+                    app:layout_constraintTop_toBottomOf="@+id/et_expertise"
                     app:srcCompat="@drawable/ic_baseline_phone_24" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/tv_phone"
+                    android:id="@+id/et_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -209,24 +209,26 @@
                     android:textAlignment="textStart"
                     android:textColor="#B9B9B9"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_save"
+                    app:layout_constraintBottom_toTopOf="@+id/mb_update"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent=".30"
                     app:layout_constraintStart_toStartOf="@+id/tv_about_title"
                     app:layout_constraintTop_toBottomOf="@+id/tv_about_title" />
 
-                <Button
-                    android:id="@+id/btn_save"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mb_update"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@drawable/selector_button"
                     android:paddingStart="24dp"
                     android:paddingEnd="24dp"
                     android:text="Update"
-                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/mina"
+                    android:textColor="@color/colorPrimaryDark"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_doctor_about"
@@ -243,9 +245,9 @@
                     app:icon="@drawable/ic_logout"
                     app:iconTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btn_save"
-                    app:layout_constraintStart_toStartOf="@+id/btn_save"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_save" />
+                    app:layout_constraintEnd_toEndOf="@+id/mb_update"
+                    app:layout_constraintStart_toStartOf="@+id/mb_update"
+                    app:layout_constraintTop_toBottomOf="@+id/mb_update" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
