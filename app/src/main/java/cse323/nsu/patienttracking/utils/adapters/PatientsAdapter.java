@@ -44,7 +44,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
         if (patientList != null) {
             Patient patient = patientList.get(position);
 
-            holder.mAvatar.setImageResource(patient.getSex().equals("male") ? R.drawable.illustration_male_doctor : R.drawable.illustration_female_doctor);
+            holder.mAvatar.setImageResource(patient.getSex().equals("male") ? R.drawable.ic_male : R.drawable.ic_female);
 
             if(patient.getName() != null) {
                 holder.mName.setText(patient.getName());

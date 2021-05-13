@@ -7,6 +7,10 @@ public class DoctorAppointment {
     private String status;
     private String type;
     private String date;
+    private String message;
+    private String patientName;
+    private String patientSex;
+    private String patientLocation;
 
     private String doctorUid;
     private String patientUid;
@@ -15,12 +19,16 @@ public class DoctorAppointment {
         // empty constructor for firebase
     }
 
-    public DoctorAppointment(String doctorName, String doctorSex, String status, String type, String date, String doctorUid, String patientUid) {
+    public DoctorAppointment(String doctorName, String doctorSex, String doctorUid, String status, String type, String date, String message, String patientName, String patientSex, String patientLocation, String patientUid) {
         this.doctorName = doctorName;
         this.doctorUid = doctorUid;
         this.patientUid = patientUid;
         this.doctorSex = doctorSex;
         this.status = status;
+        this.patientName = patientName;
+        this.patientSex = patientSex;
+        this.patientLocation = patientLocation;
+        this.message = message;
         this.type = type;
         this.date = date;
     }
@@ -67,5 +75,25 @@ public class DoctorAppointment {
 
     public String getPatientUid() {
         return patientUid;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getPatientSex() {
+        return patientSex;
+    }
+
+    public String getPatientLocation() {
+        return patientLocation;
     }
 }
