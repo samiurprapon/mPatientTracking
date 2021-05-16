@@ -151,7 +151,7 @@ public class PatientProfileActivity extends AppCompatActivity {
             if(patient.getBlood() != null) {
                 editor.putString("blood", patient.getBlood());
             }
-            if(patient != null) {
+            if(patient.getEmail() != null) {
                 editor.putString("email", patient.getEmail());
             }
 
