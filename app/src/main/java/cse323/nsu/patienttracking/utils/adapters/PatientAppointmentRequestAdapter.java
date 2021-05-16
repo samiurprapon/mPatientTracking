@@ -76,7 +76,7 @@ public class PatientAppointmentRequestAdapter extends RecyclerView.Adapter<Patie
         DatabaseReference mReference = FirebaseDatabase.getInstance().getReference("appointments");
         appointment.setStatus("accepted");
 
-        mReference.child("doctors").child(appointment.getId()).setValue(appointment).addOnCompleteListener(task -> {
+        mReference.child(appointment.getId()).setValue(appointment).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Toast.makeText(context, "Appointment accepted!", Toast.LENGTH_SHORT).show();
                 progressBar.hide();
@@ -92,7 +92,7 @@ public class PatientAppointmentRequestAdapter extends RecyclerView.Adapter<Patie
         DatabaseReference mReference = FirebaseDatabase.getInstance().getReference("appointments");
         appointment.setStatus("cancelled");
 
-        mReference.child("doctors").child(appointment.getId()).setValue(appointment).addOnCompleteListener(task -> {
+        mReference.child(appointment.getId()).setValue(appointment).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Toast.makeText(context, "Appointment cancelled!", Toast.LENGTH_SHORT).show();
                 progressBar.hide();

@@ -130,7 +130,9 @@ public class DoctorHomeFragment extends Fragment {
                 progressBar.hide();
 
                 adapter.setDoctorAppointmentList(appointmentList);
-                mRecyclerView.setAdapter(adapter);
+                if(mRecyclerView.getAdapter() == null) {
+                    mRecyclerView.setAdapter(adapter);
+                }
 
                 if(appointmentList.size() != 0) {
                     mNoAppointments.setVisibility(View.GONE);
