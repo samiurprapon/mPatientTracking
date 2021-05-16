@@ -144,13 +144,30 @@ public class PatientProfileActivity extends AppCompatActivity {
     public void setSharedPreferences(Patient patient) {
         SharedPreferences.Editor editor =  getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
 
-        editor.putString("name", patient.getName());
-        editor.putString("blood", patient.getBlood());
-        editor.putString("email", patient.getEmail());
-        editor.putString("phone", patient.getPhone());
-        editor.putString("sex", patient.getSex());
-        editor.putString("location", patient.getLocation());
-        editor.putInt("age", patient.getAge());
+        if(patient != null) {
+            if(patient.getName() != null) {
+                editor.putString("name", patient.getName());
+            }
+            if(patient.getBlood() != null) {
+                editor.putString("blood", patient.getBlood());
+            }
+            if(patient != null) {
+                editor.putString("email", patient.getEmail());
+            }
+
+            if(patient.getPhone() != null) {
+                editor.putString("phone", patient.getPhone());
+            }
+            if(patient.getSex() != null) {
+                editor.putString("sex", patient.getSex());
+            }
+            if(patient.getLocation() != null) {
+                editor.putString("location", patient.getLocation());
+            }
+            if(patient.getAge() != 0) {
+                editor.putInt("age", patient.getAge());
+            }
+        }
 
         editor.apply();
     }
