@@ -96,8 +96,11 @@ public class PatientProfileActivity extends AppCompatActivity {
         reference.child(uid).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
                 Patient patient = task.getResult().getValue(Patient.class);
-                setSharedPreferences(patient);
-                updatePlaceholders(patient);
+
+                if(patient != null) {
+                    setSharedPreferences(patient);
+                    updatePlaceholders(patient);
+                }
 
             } else {
                 Log.w(TAG, "readDataFromFirebase:failure", task.getException());
