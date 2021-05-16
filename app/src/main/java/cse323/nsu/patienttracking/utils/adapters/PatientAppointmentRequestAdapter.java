@@ -4,18 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cse323.nsu.patienttracking.R;
 import cse323.nsu.patienttracking.models.DoctorAppointment;
+import cse323.nsu.patienttracking.utils.CustomProgressBar;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PatientAppointmentRequestAdapter extends RecyclerView.Adapter<PatientAppointmentRequestAdapter.ViewHolder> {
@@ -23,12 +27,15 @@ public class PatientAppointmentRequestAdapter extends RecyclerView.Adapter<Patie
     Context context;
     LayoutInflater layoutInflater;
 
+    CustomProgressBar progressBar;
+
     private List<DoctorAppointment> appointmentList;
 
     public PatientAppointmentRequestAdapter(Context context) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         appointmentList = new ArrayList<>();
+        progressBar = new CustomProgressBar(context);
     }
 
     @NonNull
@@ -53,16 +60,48 @@ public class PatientAppointmentRequestAdapter extends RecyclerView.Adapter<Patie
             holder.mMessage.setText(appointment.getMessage());
 
             holder.mAccept.setOnClickListener(v -> {
-                //ToDo
-                // change status with accepted
+                progressBar.show("");
+                acceptRequest(appointment);
             });
 
             holder.mCancel.setOnClickListener(v -> {
-                //ToDo
-                // change status with cancelled
+                progressBar.show("");
+                canceledRequest(appointment);
             });
 
         }
+    }
+
+    private void acceptRequest(DoctorAppointment appointment) {
+        DatabaseReference mReference = FirebaseDatabase.getInstance().getReference("appointments");
+        appointment.setStatus("accepted");
+
+        mReference.child("doctors").child(appointment.getId()).setValue(appointment).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(context, "Appointment accepted!", Toast.LENGTH_SHORT).show();
+                progressBar.hide();
+                notifyDataSetChanged();
+            } else {
+                progressBar.hide();
+            }
+        });
+
+    }
+
+    private void canceledRequest(DoctorAppointment appointment) {
+        DatabaseReference mReference = FirebaseDatabase.getInstance().getReference("appointments");
+        appointment.setStatus("cancelled");
+
+        mReference.child("doctors").child(appointment.getId()).setValue(appointment).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(context, "Appointment cancelled!", Toast.LENGTH_SHORT).show();
+                progressBar.hide();
+                notifyDataSetChanged();
+            } else {
+                progressBar.hide();
+            }
+        });
+
     }
 
     @Override

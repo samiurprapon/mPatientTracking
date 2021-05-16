@@ -96,4 +96,8 @@ public class DoctorAppointment {
     public String getPatientLocation() {
         return patientLocation;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
