@@ -1,5 +1,6 @@
 package cse323.nsu.patienttracking.doctor.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import cse323.nsu.patienttracking.utils.CustomProgressBar;
 
 public class DoctorProfileFragment extends Fragment {
 
+    @SuppressLint("StaticFieldLeak")
     private static DoctorProfileFragment fragment = null;
 
     private ImageView mAvatar;
@@ -37,8 +39,6 @@ public class DoctorProfileFragment extends Fragment {
     private MaterialTextView mEmail;
     private MaterialTextView mWorkplace;
     private MaterialTextView mAbout;
-
-    private ImageButton mSettings;
 
     CustomProgressBar progressBar;
 
@@ -81,7 +81,7 @@ public class DoctorProfileFragment extends Fragment {
         mWorkplace = view.findViewById(R.id.doctor_address);
         mAbout = view.findViewById(R.id.tv_doctor_about);
 
-        mSettings = view.findViewById(R.id.ib_profile_settings);
+        ImageButton mSettings = view.findViewById(R.id.ib_profile_settings);
 
         progressBar = new CustomProgressBar(getContext());
 
@@ -90,6 +90,7 @@ public class DoctorProfileFragment extends Fragment {
         updatePlaceHolders(getSharedPreferences());
 
         mSettings.setOnClickListener(v -> {
+            // change
             changeFragment(DoctorProfileSettingsFragment.newInstance());
         });
 
@@ -99,11 +100,15 @@ public class DoctorProfileFragment extends Fragment {
         String uid = FirebaseAuth.getInstance().getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("doctors");
 
+        assert uid != null;
         reference.child(uid).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 AvailableDoctor doctor = task.getResult().getValue(AvailableDoctor.class);
-                setSharedPreferences(doctor);
-                updatePlaceHolders(doctor);
+
+                if(doctor != null) {
+                    setSharedPreferences(doctor);
+                    updatePlaceHolders(doctor);
+                }
             }
 
             progressBar.hide();
@@ -142,7 +147,6 @@ public class DoctorProfileFragment extends Fragment {
 
         if (doctor.getWorkplace() != null) {
             mWorkplace.setText(doctor.getWorkplace());
-
         }
 
         if (doctor.getAbout() != null) {
@@ -153,14 +157,31 @@ public class DoctorProfileFragment extends Fragment {
     public void setSharedPreferences(AvailableDoctor doctor) {
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("doctorProfile", Context.MODE_PRIVATE).edit();
 
-        editor.putString("name", doctor.getName());
-        editor.putString("degree", doctor.getDegree());
-        editor.putString("expertise", doctor.getExpertise());
-        editor.putString("email", doctor.getEmail());
-        editor.putString("phone", doctor.getPhone());
-        editor.putString("sex", doctor.getSex());
-        editor.putString("work", doctor.getWorkplace());
-        editor.putString("about", doctor.getAbout());
+        if(doctor.getName() != null) {
+            editor.putString("name", doctor.getName());
+        }
+
+        if(doctor.getDegree() != null) {
+            editor.putString("degree", doctor.getDegree());
+        }
+        if(doctor.getExpertise() != null) {
+            editor.putString("expertise", doctor.getExpertise());
+        }
+        if(doctor.getEmail() != null) {
+            editor.putString("email", doctor.getEmail());
+        }
+        if(doctor.getPhone() != null) {
+            editor.putString("phone", doctor.getPhone());
+        }
+        if(doctor.getName() != null) {
+            editor.putString("sex", doctor.getSex());
+        }
+        if(doctor.getWorkplace() != null) {
+            editor.putString("work", doctor.getWorkplace());
+        }
+        if(doctor.getAbout() != null) {
+            editor.putString("about", doctor.getAbout());
+        }
 
         editor.apply();
     }
