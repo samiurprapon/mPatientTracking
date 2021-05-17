@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import cse323.nsu.patienttracking.R;
@@ -69,7 +70,10 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
     }
 
     public void setPatientList(List<Patient> patientList) {
-        this.patientList = patientList;
+        HashSet<Patient> hashSet = new HashSet<>(patientList);
+        patientList.clear();
+        patientList.addAll(hashSet);
+
         notifyDataSetChanged();
     }
 

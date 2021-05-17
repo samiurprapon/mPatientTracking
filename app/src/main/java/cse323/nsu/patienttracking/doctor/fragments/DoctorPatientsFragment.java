@@ -110,7 +110,11 @@ public class DoctorPatientsFragment extends Fragment {
 
     private void changeFragment(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = null;
+        if (fragmentManager != null) {
+            fragmentTransaction = fragmentManager.beginTransaction();
+        }
+        assert fragmentTransaction != null;
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                 R.anim.left_enter, R.anim.right_out);
@@ -142,7 +146,7 @@ public class DoctorPatientsFragment extends Fragment {
                         Log.d("DoctorPatients:out", appointment.getPatientUid());
 
                         // call patients with patientUID
-                        if(appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled")) {
+                        if(appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled") && !appointment.getStatus().equals("pending")) {
                             getPatientDetails(appointment.getPatientUid());
                             Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
                             Log.d("DoctorPatients:int", appointment.getPatientUid());
@@ -169,23 +173,22 @@ public class DoctorPatientsFragment extends Fragment {
         reference.child(uid).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
                 Patient patient = task.getResult().getValue(Patient.class);
-                Log.d("DoctorPatients:int", patient.toString());
+                if (patient != null) {
+                    Log.d("DoctorPatients:int", patient.toString());
 
-                if(patient != null) {
                     patientList.add(patient);
                     Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
-
-                    if(patientList.size() != 0) {
-                        mNoPatients.setVisibility(View.GONE);
-                        mRecyclerView.setVisibility(View.VISIBLE);
-                    } else {
-                        mRecyclerView.setVisibility(View.GONE);
-                        mNoPatients.setVisibility(View.VISIBLE);
-                    }
-
-                    adapter.notifyDataSetChanged();
                 }
 
+                if(patientList.size() != 0) {
+                    mNoPatients.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                } else {
+                    mRecyclerView.setVisibility(View.GONE);
+                    mNoPatients.setVisibility(View.VISIBLE);
+                }
+
+                adapter.notifyDataSetChanged();
 
                 adapter.setPatientList(patientList);
                 mRecyclerView.setAdapter(adapter);
