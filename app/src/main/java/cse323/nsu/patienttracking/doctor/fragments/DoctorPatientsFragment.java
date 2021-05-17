@@ -1,6 +1,11 @@
 package cse323.nsu.patienttracking.doctor.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,12 +17,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.os.Handler;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -142,11 +141,11 @@ public class DoctorPatientsFragment extends Fragment {
                     if (appointment != null) {
                         appointment.setId(dataSnapshot.getKey());
 
-                        Log.d("appointment:success", appointment.getPatientUid());
+//                        Log.d("appointment:success", appointment.getPatientUid());
 
                         // call patients with patientUID
-                        if(appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled")) {
-                            Log.d("appointment:patient", appointment.getPatientUid());
+                        if(appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled") && !appointment.getStatus().equals("pending") ) {
+//                            Log.d("appointment:patient", appointment.getPatientUid());
                             getPatientDetails(appointment.getPatientUid());
                         }
                     }

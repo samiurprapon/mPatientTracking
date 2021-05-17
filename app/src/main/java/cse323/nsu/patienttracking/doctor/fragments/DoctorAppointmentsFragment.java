@@ -128,15 +128,15 @@ public class DoctorAppointmentsFragment extends Fragment {
                     DoctorAppointment appointment = dataSnapshot.getValue(DoctorAppointment.class);
                     if (appointment != null) {
                         appointment.setId(dataSnapshot.getKey());
-
-                        Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
-                        Log.d("DoctorPatients:out", appointment.getPatientUid());
+//
+//                        Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
+//                        Log.d("DoctorPatients:out", appointment.getPatientUid());
 
                         // call patients with patientUID
-                        if (appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("accepted")) {
+                        if (appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled") && !appointment.getStatus().equals("pending") && appointment.getStatus().equals("accepted")) {
                             getPatientDetails(appointment.getPatientUid());
-                            Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
-                            Log.d("DoctorPatients:int", appointment.getPatientUid());
+//                            Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
+//                            Log.d("DoctorPatients:int", appointment.getPatientUid());
 
                         }
                     }
