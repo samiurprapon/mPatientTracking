@@ -54,10 +54,9 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_patients"
+                    android:id="@+id/rv_patients_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
                     tools:listitem="@layout/item_patient"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

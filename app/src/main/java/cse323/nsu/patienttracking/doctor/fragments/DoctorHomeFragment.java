@@ -2,6 +2,7 @@ package cse323.nsu.patienttracking.doctor.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,9 +117,6 @@ public class DoctorHomeFragment extends Fragment {
                     DoctorAppointment appointment = dataSnapshot.getValue(DoctorAppointment.class);
                     if (appointment != null) {
                         appointment.setId(dataSnapshot.getKey());
-
-//                        Log.d("appointment:success", appointment.getPatientUid());
-//                        Log.d("appointment:success", uid);
 
                         if(appointment.getDoctorUid() != null && appointment.getDoctorUid().equals(uid) && appointment.getStatus().equals("pending")){
                             appointmentList.add(appointment);

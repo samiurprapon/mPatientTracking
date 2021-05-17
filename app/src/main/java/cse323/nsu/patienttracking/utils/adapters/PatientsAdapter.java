@@ -71,8 +71,8 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.ViewHo
 
     public void setPatientList(List<Patient> patientList) {
         HashSet<Patient> hashSet = new HashSet<>(patientList);
-        patientList.clear();
-        patientList.addAll(hashSet);
+        this.patientList.clear();
+        this.patientList.addAll(hashSet);
 
         notifyDataSetChanged();
     }

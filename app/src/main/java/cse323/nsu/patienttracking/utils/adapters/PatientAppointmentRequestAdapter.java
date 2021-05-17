@@ -51,7 +51,7 @@ public class PatientAppointmentRequestAdapter extends RecyclerView.Adapter<Patie
         if (appointmentList != null) {
             DoctorAppointment appointment = appointmentList.get(position);
 
-            holder.mAvatar.setImageResource(appointment.getPatientSex().equals("male") ? R.drawable.ic_male : R.drawable.ic_female);
+            holder.mAvatar.setImageResource(appointment.getPatientSex() != null && appointment.getPatientSex().equals("male")? R.drawable.ic_male : R.drawable.ic_female);
 
             holder.mPatientName.setText(appointment.getPatientName());
             holder.mLocation.setText(appointment.getPatientLocation());

@@ -78,7 +78,7 @@ public class DoctorPatientsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView = view.findViewById(R.id.rv_patients);
+        mRecyclerView = view.findViewById(R.id.rv_patients_list);
         swipeRefreshLayout= view.findViewById(R.id.refresh);
         mNoPatients = view.findViewById(R.id.cl_no_patients);
 
@@ -142,15 +142,12 @@ public class DoctorPatientsFragment extends Fragment {
                     if (appointment != null) {
                         appointment.setId(dataSnapshot.getKey());
 
-                        Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
-                        Log.d("DoctorPatients:out", appointment.getPatientUid());
+                        Log.d("appointment:success", appointment.getPatientUid());
 
                         // call patients with patientUID
-                        if(appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled") && !appointment.getStatus().equals("pending")) {
+                        if(appointment.getDoctorUid().equals(uid) && !appointment.getStatus().equals("cancelled")) {
+                            Log.d("appointment:patient", appointment.getPatientUid());
                             getPatientDetails(appointment.getPatientUid());
-                            Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
-                            Log.d("DoctorPatients:int", appointment.getPatientUid());
-
                         }
                     }
 
@@ -173,12 +170,11 @@ public class DoctorPatientsFragment extends Fragment {
         reference.child(uid).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
                 Patient patient = task.getResult().getValue(Patient.class);
-                if (patient != null) {
-                    Log.d("DoctorPatients:int", patient.toString());
 
-                    patientList.add(patient);
-                    Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
-                }
+                patientList.add(patient);
+
+                Log.d("appointment:inside", patient.getEmail());
+
 
                 if(patientList.size() != 0) {
                     mNoPatients.setVisibility(View.GONE);
@@ -188,14 +184,16 @@ public class DoctorPatientsFragment extends Fragment {
                     mNoPatients.setVisibility(View.VISIBLE);
                 }
 
-                adapter.notifyDataSetChanged();
-
                 adapter.setPatientList(patientList);
-                mRecyclerView.setAdapter(adapter);
+                if(mRecyclerView.getAdapter() == null) {
+                    mRecyclerView.setAdapter(adapter);
+                }
+                Log.d("appointment:inside", ""+patientList.size());
+                adapter.notifyDataSetChanged();
 
             }
         });
-        Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
+//        Log.d("DoctorPatients:size", String.valueOf(patientList.size()));
 
     }
 
